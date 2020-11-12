@@ -43,7 +43,7 @@ public class SnakeAndLadder {
 				
 					break;
 				default:
-					System.out.println("Something Wrong");
+					System.out.println("Something went Wrong");
 					break;	
 			}
 		}	
