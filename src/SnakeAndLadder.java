@@ -18,6 +18,7 @@ public class SnakeAndLadder {
 
 		System.out.println("Welcome to Snake And Ladder Simulator Program");
 		int Player1Position = 0;
+		int WinPosition = 100;
 		//repeat till win position i.e. till 100
 		while(Player1Position !=100) {
 			int Player1Dice = rollDice();   //player roll dice to get number
@@ -31,7 +32,10 @@ public class SnakeAndLadder {
 				case 2:
 					System.out.println("Player got the Ladder");
 					Player1Position += Player1Dice;
-				
+					//ensure win position 100
+					if (Player1Position > WinPosition) {
+						Player1Position -= Player1Dice;
+					}
 					break;
 				case 3:
 					System.out.println("Oops! Player got the Snake");
