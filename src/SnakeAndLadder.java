@@ -8,11 +8,6 @@ public class SnakeAndLadder {
 		return dicevalue;
 	}
 	
-	//Function to check Player get a Ladder or snake or player play or not
-	public static int checkOption() {
-		return (int) Math.floor(Math.random()*3) + 1;
-	}
-	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		// Print Welcome Message
