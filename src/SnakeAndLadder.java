@@ -15,14 +15,21 @@ public class SnakeAndLadder {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		// Print Welcome Message
-
 		System.out.println("Welcome to Snake And Ladder Simulator Program");
+		//Variables
 		int Player1Position = 0;
+		int Player2Position = 0;
 		int PlayGame1 = 0;
-		int WinPosition = 100;
-		//repeat till win position i.e. till 100
-		while(Player1Position !=100) {
+		int PlayGame2 = 0;
+		int WinPosition= 100;
+
+		while(Player1Position !=100 || Player2Position !=100) {
 			int Player1Dice = rollDice();   //player roll dice to get number
+			PlayGame1++;
+			System.out.println("Player1 Dice:"+Player1Dice);
+			int Player2Dice = rollDice();
+			System.out.println("Player2 Dice:"+Player2Dice);
+			PlayGame2++;
 			int option = checkOption(); //player check for options
 			
 			// Use Switch case for option
@@ -33,11 +40,14 @@ public class SnakeAndLadder {
 				case 2:
 					System.out.println("Player got the Ladder");
 					Player1Position += Player1Dice;
-					//ensure win position 100
+					Player2Position += Player2Dice;
 					if (Player1Position > WinPosition) {
 						Player1Position -= Player1Dice;
+					}else if (Player2Position > WinPosition) {
+						Player2Position -= Player2Dice;
 					}
 					System.out.println("Player1 position is now "+Player1Position);
+					System.out.println("Player2 postion is now "+Player2Position);
 					break;
 				case 3:
 					System.out.println("Oops! Player got the Snake");
@@ -46,21 +56,31 @@ public class SnakeAndLadder {
                 	} else {
                     	Player1Position -= Player1Dice;
                 	}
+					if ( (Player2Position - Player2Dice) < 0) {
+                    	Player2Position = 0;
+                	} else {
+                    	Player2Position -= Player2Dice;
+                	}
 					System.out.println("Player1 position is now "+Player1Position);
+					System.out.println("Player2 postion is now "+Player2Position);
 					break;
 				default:
 					System.out.println("Something went Wrong");
 					break;	
 			}
-			if(Player1Position == WinPosition)
-				if(Player1Position == WinPosition) {
-					
-					System.out.println("----------Player won !----------");
-					System.out.println("Number of times dice was played to win the game: "+PlayGame1);
-					break;
-				}
-		}	
-
+		// check the condition which player has won the game.
+		if(Player1Position == WinPosition || Player2Position == WinPosition)
+			if(Player1Position == WinPosition) {
+				
+				System.out.println("----------Player1 won !----------");
+				System.out.println("Number of times dice was played to win the game: "+PlayGame1);
+				break;
+			}else if(Player2Position ==  WinPosition) {
+				System.out.println("----------Player2 won !----------");
+				System.out.println("Number of times dice was played to win the game: "+PlayGame2);
+				break;
+			}
+		 }
 	}
 
 }
